@@ -96,7 +96,7 @@ PiperTTS: {
     endpoints: [
         // Public browser-accessible PiperTTS service used by both local and GitHub Pages deployments.
         // Keeping this as a Client endpoint avoids routing synthesis through the local InfoScreen server.
-        {order:1, type: "Client", url:"https://basictts.com"},
+        {order:1, type: "Client", url:"https://fillimerica.pythonanywhere.com"},
     ]
 },
 };
