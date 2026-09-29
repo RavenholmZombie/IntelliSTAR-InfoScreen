@@ -13,7 +13,7 @@ general: {
     // crawlText is the text displayed in a single line below the various weather pages.
     // it is scrolled horizontally throughout the weather presentation.
     // the default text set here is displayed only if there are no active alerts (or if alerts are disabled in the UI)
-    crawlText: "Hi Matthew! If there was a severe weather alert, it would be scrolling here... But right now there are no active alerts so dad can say hi.",
+    crawlText: "InfoScreen puts weather, cameras, streaming, media, alerts, and more in one customizable display. Built to be flexible, expandable, and completely open source — powered by a growing collection of InfoScreen applets.",
 
     // twcAPIKey is the API key used to access the weather data.
     // this key may need to be updated on occasion if it becomes invalid.
