@@ -94,9 +94,9 @@ PiperTTS: {
     //      A simple diagnostic test is to try to reach the url/voices with a browser on the corresponding source. A list of available
     //      narration voices should be returned if the PiperTTS server is reachable.
     endpoints: [
-        {order:1, type: "Server", url:"http://192.168.40.158:5000"},
-        {order:0, type: "Server", url:"https://someuser.pythonanywhere.com"},
-        {order:2, type: "Client", url:"https://fillimerica.pythonanywhere.com"},
+        // Public browser-accessible PiperTTS service used by both local and GitHub Pages deployments.
+        // Keeping this as a Client endpoint avoids routing synthesis through the local InfoScreen server.
+        {order:1, type: "Client", url:"https://basictts.com"},
     ]
 },
 };
