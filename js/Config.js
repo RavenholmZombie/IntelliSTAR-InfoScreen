@@ -121,6 +121,11 @@ window.CONFIG = {
   load: async () => {
     let optYN,optBool,selElement;
 
+    // Restore the loop setting before a presentation starts. The loop toggle stores
+    // this value in localStorage, and page reloads are how a completed sequence
+    // starts fresh and fetches current weather again.
+    CONFIG.loop = localStorage.getItem('loop') === "y";
+
     // zip or airport code.
     const usertext = localStorage.getItem('usertext');
     getElement('usertext').value=usertext;
