@@ -8,7 +8,7 @@ general: {
 
     // greetingText is the text displayed (and spoken) on the Greeting/HELLO page.
     // this setting can be customized in the UI, this is just the default.
-    greetingText: "Matthew, this is your weather.",
+    greetingText: "InfoScreen, this is your weather.",
 
     // crawlText is the text displayed in a single line below the various weather pages.
     // it is scrolled horizontally throughout the weather presentation.
