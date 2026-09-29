@@ -109,7 +109,7 @@ window.ttsGetSpeech = async function(SpeechStr,ttsURL,voiceSelect) {
       break;
     default:
       console.log('Using default Piper TTS Speech URI formatting.');
-      ttsURI = ttsURL+"/";
+      ttsURI = ttsURL+"/synthesize";
   }
   const response = await fetch(ttsURI, {
     method: 'POST',
