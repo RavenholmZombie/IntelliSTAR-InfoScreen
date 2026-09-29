@@ -84,7 +84,7 @@ export async function GetSpeech(ttsURL,SpeechStr,voiceSelect) {
 // This function retrieves the audio speech blob from the configured tts Server
 
   // Call the PiperTTS voice server to synthesize the voice.
-  const response = await fetch(ttsURL, {
+  const response = await fetch(ttsURL+"/synthesize", {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ text: SpeechStr, voice: voiceSelect }),
