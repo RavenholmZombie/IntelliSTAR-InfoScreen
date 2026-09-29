@@ -117,7 +117,11 @@ window.onload = async function () {
     airportCode=urlParams.get('airport').toUpperCase();
     getElement('usertext').value=airportCode;
     CONFIG.run();
+  } else if (CONFIG.hasSavedDefaults && CONFIG.isLocationValid()) {
+    // Saved defaults exist, so skip setup and immediately start the presentation.
+    CONFIG.run();
   } else {
+    // First run (or invalid/missing saved location): show setup.
     openSettingsDialog();
   }
 }
