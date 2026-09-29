@@ -117,11 +117,21 @@ window.onload = async function () {
     airportCode=urlParams.get('airport').toUpperCase();
     getElement('usertext').value=airportCode;
     CONFIG.run();
-  } else if (CONFIG.hasSavedDefaults && CONFIG.isLocationValid()) {
-    // Saved defaults exist, so skip setup and immediately start the presentation.
-    CONFIG.run();
+  } else if (CONFIG.hasSavedDefaults) {
+    // Saved defaults exist. Restore the saved location explicitly before validating
+    // and starting so startup does not depend on any transient form state.
+    const savedLocation = localStorage.getItem('usertext') || "";
+    getElement('usertext').value = savedLocation;
+    console.log("Saved defaults detected. Auto-starting location:", savedLocation);
+
+    if (CONFIG.isLocationValid()) {
+      CONFIG.run();
+    } else {
+      console.warn("Saved defaults exist, but the saved location is invalid. Opening setup.");
+      openSettingsDialog();
+    }
   } else {
-    // First run (or invalid/missing saved location): show setup.
+    // First run: show setup.
     openSettingsDialog();
   }
 }
