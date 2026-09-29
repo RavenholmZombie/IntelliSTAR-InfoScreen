@@ -126,8 +126,13 @@ window.CONFIG = {
     // starts fresh and fetches current weather again.
     CONFIG.loop = localStorage.getItem('loop') === "y";
 
+    // A saved-default marker tells startup that the user has intentionally completed
+    // setup at least once. Merely having individual localStorage values is not enough,
+    // since older sessions may contain partial settings.
+    CONFIG.hasSavedDefaults = localStorage.getItem('settingsSaved') === "y";
+
     // zip or airport code.
-    const usertext = localStorage.getItem('usertext');
+    const usertext = localStorage.getItem('usertext') || "";
     getElement('usertext').value=usertext;
 
     // alertsEnabled 
@@ -235,7 +240,17 @@ window.CONFIG = {
     if(optBool) {optYN="y"} else {optYN="n"};
     localStorage.setItem('alertsNarration',optYN);
 
-    MsgBox("Save Settings","Settings have been saved.");
+    // Mark setup as complete only after Save as Default is explicitly clicked.
+    localStorage.setItem('settingsSaved',"y");
+    CONFIG.hasSavedDefaults = true;
+
+    // Saving the defaults also starts the presentation immediately.
+    if(CONFIG.isLocationValid()) {
+      getElement("myDialog").close();
+      CONFIG.run();
+    } else {
+      MsgBox("Location Error","The location entered is neither a valid 5-digit zip code nor a valid airport code. <br> Settings were saved, but the weather presentation could not be started.");
+    }
   }
 }
 
